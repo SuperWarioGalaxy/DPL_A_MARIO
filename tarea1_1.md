@@ -15,7 +15,7 @@ Creo el archivo 1.txt en el local y un nuevo tag "v0.1" con el comando "git tag 
 Luego accedo a las opciones de configuracion de mi cuenta GitHub para realizar varios cambios a mi perfil y seguridad, asi como seguimiento de otros repositorios
 
 |Nombre  |GitHub|
----------------------------------------------------------
+|--------|----------------------------------------------|
 |David   |https://github.com/David-Luis-Mora/DPL_A_David|
 
 
