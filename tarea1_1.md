@@ -10,6 +10,8 @@ Realizo un "git push --set-upstream origin main" subiendo los cambios al reposit
 
 Creo la carpeta "privada" y el archivo "privado.txt", para evitart que GitHub los vea tambien creo el archivo .gitignore, en el cual escribire todo lo que se debe ignorar:
 
+![alt text](Ignorar.png)
+
 Creo el archivo 1.txt en el local y un nuevo tag "v0.1" con el comando "git tag v0.1", una vez creados los subo al repositorio
 
 Luego accedo a las opciones de configuracion de mi cuenta GitHub para realizar varios cambios a mi perfil y seguridad, asi como seguimiento de otros repositorios
