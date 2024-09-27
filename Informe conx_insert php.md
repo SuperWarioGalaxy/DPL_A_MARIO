@@ -18,4 +18,6 @@ con el siguiente contenido:
 
 Gracias a este codigo podremos visualizar un objeto en el navegador que repesenta la BD
 
-En "insertar.php"
+En "insertar.php" reutilizaremos codigo del fichero anterior en el cual añadiremos lo siguiente:
+
+"$insert = "insert into users(name, email)""
