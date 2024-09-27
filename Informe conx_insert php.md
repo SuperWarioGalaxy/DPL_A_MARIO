@@ -11,10 +11,10 @@ Con esto tendre creada la BD y tabla para hacer pruebas con los siguientes archi
 creo un archivo "conexion.php" en el cual escribire un sencillo codigo para conectarme a la BD
 con el siguiente contenido:
 
-<?php  <br>
-$conn= mysqli_connect(direccion del server,usaurio,contraseña,BD);  <br>
-echo "<pre>";  <br>
-print_r($conn);  <br>
+<?php  
+$conn= mysqli_connect(direccion del server,usaurio,contraseña,BD);  
+echo "<pre>";  
+print_r($conn);  
 
 
 
