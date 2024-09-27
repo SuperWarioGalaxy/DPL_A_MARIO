@@ -14,7 +14,7 @@ con el siguiente contenido:
 
 "<?php"  <br>
 "$conn= mysqli_connect(direccion del server,usaurio,contraseña,BD);  "  <br>
-"echo "<pre>";  "  <br>
+"echo "< pre> ";  "  <br>
 "print_r($conn); "  <br>
 
 
