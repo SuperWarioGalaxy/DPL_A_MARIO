@@ -7,6 +7,11 @@ created(con DATETIME y ocn valor predeterminado de "current_timestamp")
 
 Con esto tendre creada la BD y tabla para hacer pruebas con los siguientes archivos que creare:
 
+creo un archivo "conexion.php" en el cual escribire un sencillo codigo para conectarme a la BD
+con el siguiente contenido:
 
-creo un archivo "conexion.php"
+
+
+
+
 creo el archivo "insertar.php"
