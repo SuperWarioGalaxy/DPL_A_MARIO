@@ -1,7 +1,7 @@
 Iniciando los servicios de XAMP, accedo al phpMyAdmin, en este creare una nueva BD llamada "pruebas"
 dentro de pruebas creare una tabla llamada "users" en la cual definire 4 campos:
 <br>
-ID(sera de valor INT y autoincremental con una longitud de 11),
+ID(sera de valor INT y autoincremental con una longitud de 11),<br>
 nombre(un VARCHAR de longitud 200),
 email(un VARCHAR de longitud 200),
 created(con DATETIME y ocn valor predeterminado de "current_timestamp"),
