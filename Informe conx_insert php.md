@@ -12,10 +12,10 @@ creo un archivo "conexion.php" en el cual escribire un sencillo codigo para cone
 con el siguiente contenido:
 
 
-"<?php"
-$conn= mysqli_connect(direccion del server,usaurio,contraseña,BD);  
-echo "<pre>";  
-print_r($conn); 
+"<?php"  <br>
+"$conn= mysqli_connect(direccion del server,usaurio,contraseña,BD);  "  <br>
+"echo "<pre>";  "  <br>
+"print_r($conn); "  <br>
 
 
 
