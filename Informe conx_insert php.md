@@ -6,18 +6,16 @@ nombre(un VARCHAR de longitud 200),<br>
 email(un VARCHAR de longitud 200),<br>
 created(con DATETIME y ocn valor predeterminado de "current_timestamp"),<br>
 
-Con esto tendre creada la BD y tabla para hacer pruebas con los siguientes archivos que creare:
+Con esto tendre creada la BD y tabla para hacer pruebas con los siguientes archivos que creare: conexion.php y insertar.php
 
-creo un archivo "conexion.php" en el cual escribire un sencillo codigo para conectarme a la BD
+Dentro de"conexion.php" en el cual escribire un sencillo codigo para conectarme a la BD
 con el siguiente contenido:
-
 
 "<?php"  <br>
 "$conn= mysqli_connect(direccion del server,usaurio,contraseña,BD);  "  <br>
 "echo "< pre> ";  "  <br>
 "print_r($conn); "  <br>
 
+Gracias a este codigo podremos visualizar un objeto en el navegador que repesenta la BD
 
-
-
-creo el archivo "insertar.php"
+En "insertar.php"
