@@ -24,9 +24,9 @@ Gracias a este codigo podre visualizar un objeto mysqli en el navegador que repe
 
 En "insertar.php" utilizarae un "include('conexion.php')" para poder reutilizar el fichero anterior para volver a conectarme y escribire un nuevo codigo para insertar en la BD:
 
-"$insert = "insert into users(name, email) values('pedro','pedro@dominio.es')";" En esta linea creo la sentencia con la que insertare los datos y tambien le paso esos mismos datos.
-"$return = mysqli_query($conn,$insert);" con esto realizo la insercion en la BD.
-"print_r($return);" veo el reultado de la insercion
-"mysqli_close($conn);" y cierro la conexion.
+"$insert = "insert into users(name, email) values('pedro','pedro@dominio.es')";" En esta linea creo la sentencia con la que insertare los datos y tambien le paso esos mismos datos. <br>
+"$return = mysqli_query($conn,$insert);" con esto realizo la insercion en la BD. <br>
+"print_r($return);" veo el reultado de la insercion <br>
+"mysqli_close($conn);" y cierro la conexion. <br>
 
 Una vez realizada la insercion podre comprobar que efectivamente se creo un nuevo usuario en la tabla "users" con los datos que le pase, asi como que se le a asignado automaticamente un id y fecha de creacion.
