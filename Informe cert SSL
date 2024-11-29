@@ -1,0 +1,86 @@
+Paso 1: Obtener el Certificado SSL
+
+Si no estás utilizando Certbot, tendrás que obtener un certificado SSL manualmente. Existen dos formas comunes de hacerlo:
+
+    Comprar un certificado SSL: Puedes comprar uno a través de proveedores como Comodo, DigiCert, etc. Después de la compra, el proveedor te enviará dos archivos:
+        El certificado SSL (generalmente con extensión .crt o .pem).
+        La clave privada (archivo .key).
+
+    Generar un certificado autofirmado: Si solo necesitas un certificado para pruebas o para un entorno de desarrollo, puedes generar un certificado autofirmado utilizando OpenSSL. El siguiente comando genera un certificado y una clave privada:
+
+    openssl req -x509 -newkey rsa:4096 -keyout /etc/ssl/private/mydomain.key -out /etc/ssl/certs/mydomain.crt -days 365
+
+        mydomain.key es la clave privada.
+        mydomain.crt es el certificado.
+        Este comando genera un certificado autofirmado válido por un año.
+
+Paso 2: Copiar los Archivos del Certificado al Servidor
+
+Una vez que tengas tu certificado y clave privada, debes copiarlos a tu servidor en las ubicaciones adecuadas.
+
+Por ejemplo, en un servidor Apache, los archivos pueden ir en:
+
+    /etc/ssl/certs/ para el certificado.
+    /etc/ssl/private/ para la clave privada.
+
+Si has recibido el certificado de una entidad certificadora, es probable que también te hayan proporcionado un certificado intermedio o cadena de certificados. Si es así, deberías colocar ese archivo en una ubicación adecuada también.
+Paso 3: Configurar Apache para Usar SSL
+
+    Habilitar los módulos SSL en Apache:
+
+    Si no lo has hecho antes, habilita los módulos necesarios de Apache para SSL:
+
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo systemctl restart apache2
+
+Configurar el Virtual Host para HTTPS:
+
+Abre o crea el archivo de configuración de tu sitio en Apache. Los archivos de configuración de Apache suelen encontrarse en /etc/apache2/sites-available/ en distribuciones basadas en Debian (como Ubuntu), o /etc/httpd/conf.d/ en distribuciones basadas en Red Hat.
+
+Si estás configurando un nuevo sitio, puedes crear un archivo de configuración para HTTPS (por ejemplo, default-ssl.conf). Aquí te dejo un ejemplo de configuración para un Virtual Host que utiliza SSL:
+
+<VirtualHost *:443>
+    ServerAdmin webmaster@mydomain.com
+    DocumentRoot /var/www/html
+    ServerName mydomain.com
+    
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/mydomain.crt
+    SSLCertificateKeyFile /etc/ssl/private/mydomain.key
+    SSLCertificateChainFile /etc/ssl/certs/mydomain-chain.crt  # Si tienes un certificado intermedio
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+Si tu certificado es autofirmado, no necesitarás el archivo SSLCertificateChainFile.
+
+Habilitar el sitio HTTPS: Si estás utilizando una distribución basada en Debian/Ubuntu, asegúrate de habilitar el sitio de SSL:
+
+    sudo a2ensite default-ssl.conf
+    sudo systemctl reload apache2
+
+    En otras distribuciones, solo necesitas asegurarte de que el archivo de configuración de Apache esté cargado correctamente y que Apache sea reiniciado.
+
+Paso 4: Configurar el Redireccionamiento HTTP → HTTPS
+
+Para asegurarte de que todos los visitantes de tu sitio web sean redirigidos automáticamente a la versión segura (HTTPS), puedes añadir una regla de redirección en el archivo de configuración del Virtual Host HTTP. Por ejemplo:
+
+<VirtualHost *:80>
+    ServerName mydomain.com
+    Redirect permanent / https://mydomain.com/
+</VirtualHost>
+
+Este bloque de configuración asegura que cualquier acceso al puerto 80 (HTTP) será redirigido a HTTPS.
+Paso 5: Reiniciar Apache
+
+Después de hacer todas las configuraciones necesarias, reinicia Apache para que los cambios tengan efecto:
+
+sudo systemctl restart apache2
+
+Paso 6: Verificar la instalación del Certificado SSL
+
+    Abre tu navegador web.
+    Accede a tu sitio web utilizando https:// en lugar de http://.
+    Verifica que el navegador muestre un candado verde o el mensaje "Conexión segura".
